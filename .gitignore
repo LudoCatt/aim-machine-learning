@@ -119,6 +119,7 @@ venv.bak/
 .spyproject
 
 # Rope project settings
+
 .ropeproject
 
 # mkdocs documentation
@@ -131,3 +132,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Ho un mac
+.DS_Store
