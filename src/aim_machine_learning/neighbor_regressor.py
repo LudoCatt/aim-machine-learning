@@ -1,14 +1,14 @@
 from aim_machine_learning.base_regressor import Regressor
 import numpy as np
+from sklearn.neighbors import KNeighborsRegressor
 
 class NeighborRegressor(Regressor):
 
-    def __init__(self, k=1, **params):  # se non viene impostato diversamente, k=1
-        self.status_fit=0 # se prima non  fa fit non può fare predict
+    def __init__(self, k=1, **params):  # se non viene impostato diversamente, k=1 
         super().__init__(**params) 
         self.k=k 
-        self.X_train=None
-        self.y_train=None
+        self.X_train = None # se prima non  fa fit non può fare predict
+        self.y_train = None
         
     def fit(self, X, y):
         self.X_train=X
@@ -16,7 +16,7 @@ class NeighborRegressor(Regressor):
         
     def predict(self, X_test): 
         
-        if self.X_train is None or self.y_train is None:
+        if self.X_train is None or self.y_train is None: 
             raise NameError('Non è stato allenato, non è possibile fare previsioni')
         
         n_test=X_test.shape[0]
@@ -34,3 +34,7 @@ class NeighborRegressor(Regressor):
             
     def distance(self, x1, x2):
         return np.sum((x1-x2)**2)
+
+
+class MySklearnNeighborRegressor(KNeighborsRegressor, Regressor):
+    pass

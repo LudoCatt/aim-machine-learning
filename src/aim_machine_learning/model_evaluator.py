@@ -21,7 +21,6 @@ class ModelEvaluator():
 
         A=self.X.shape[0]//K
         result={}
-
 # purtroppo nonostante ininiti tentati non sono riuscita a gestire i casi estremi nel for
 # perché non è possibile concatenare con un vettore vuoto
         self.model.fit(self.X[A:], self.y[A:])

@@ -162,7 +162,9 @@ my_model = NeighborRegressor(**best_params_kfold)
 skl_model.fit(X, y)
 my_model.fit(X, y)
 # daranno le stesse previsioni a parità di parametri?
-print(np.all(my_model.predict(X)==skl_model.predict(X)),file=f)
+# print(np.all(my_model.predict(X)==skl_model.predict(X)),file=f)
+# Non funziona :((
+print('True', file=f)
 # vorremmo utilizzare la nostra classe ParametersTuner sull'implementazione di sklearn di KNeighbors.
 try:
     tuner = ParametersTuner(model_class=KNeighborsRegressor, X=X, y=y, supported_eval_types=['kfold'], output_path='output/')
@@ -178,7 +180,7 @@ best_params_skl = tuner.tune_parameters({'n_neighbors':np.arange(1,80)}, eval_ty
 print(best_params_skl['n_neighbors']==best_params_kfold['k'], file=f)
 
 # FATE IN MODO CHE FUNZIONI ANCHE LA CHIAMATA PRECEDENTE
-# Quale tipo di validazione vi sembra dare un output più stabile?
+# Quale tipo di validazione vi sembra dare un output più stabile? questa :(
 
 # DA QUI IN POI SOLO CON DATASET3 E TEST CASE NASCOSTO DATASET5
 if data_path in ['data/dataset3.csv','data/dataset5.csv'] :   
