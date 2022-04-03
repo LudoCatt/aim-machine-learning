@@ -15,7 +15,7 @@ class NeighborRegressor(Regressor):
         self.y_train=y
         
     def predict(self, X_test): 
-        
+# si osservi che il codice non funziona nel caso in cui X sia monodimensionale        
         if self.X_train is None or self.y_train is None: 
             raise NameError('Non è stato allenato, non è possibile fare previsioni')
         
@@ -38,3 +38,4 @@ class NeighborRegressor(Regressor):
 
 class MySklearnNeighborRegressor(KNeighborsRegressor, Regressor):
     pass
+# prende tutto ciò di cui ha bisogno dai suoi genitori
