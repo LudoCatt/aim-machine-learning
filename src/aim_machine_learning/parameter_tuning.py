@@ -40,6 +40,7 @@ class ParametersTuner():
             if flag:
                 plt.figure()
                 plt.plot(param_dict[my_k],res)
+                plt.plot(param_res[my_k], minimo, marker='o', markerfacecolor='red')
                 plt.xlabel(my_k)
                 plt.ylabel('Upper bound MSE')
                 plt.savefig(self.output_path['output_path']+params['fig_name'])
@@ -69,6 +70,7 @@ class ParametersTuner():
                 plt.figure()
                 for i in range(len(param_dict[my_b])):
                     plt.plot(param_dict[my_a], res[i,:], label='b={}'.format(param_dict[my_b][i]))
+                plt.plot(param_res[my_a], minimo, marker='o', markerfacecolor='red')
                 plt.legend(loc="upper left")
                 plt.xlabel(my_a)
                 plt.ylabel('Upper bound MSE')

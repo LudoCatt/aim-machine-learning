@@ -15,13 +15,20 @@ class NeighborRegressor(Regressor):
         self.y_train=y
         
     def predict(self, X_test): 
-# si osservi che il codice non funziona nel caso in cui X sia monodimensionale        
+        
         if self.X_train is None or self.y_train is None: 
             raise NameError('Non è stato allenato, non è possibile fare previsioni')
         
         n_test=X_test.shape[0]
         n_train=self.X_train.shape[0] 
-        predictions=np.zeros(n_test)  
+        predictions=np.zeros(n_test)
+# si osservi che senza questo pezzo il codice non funzionerebbe nel caso in cui X_test sia monodimensionale
+        if n_test==1:
+            for j in range(n_train):
+                distances[j]=self.__distance(self.X_train[j, :], X_test)  
+            indices=np.argpartition(distances, self.k)[0:self.k]
+            predictions=np.mean(self.y_train[indices])
+            return predictions
         
         for i in range(n_test):
             distances=np.zeros(n_train)
