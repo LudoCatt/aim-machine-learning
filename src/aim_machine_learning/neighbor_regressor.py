@@ -26,13 +26,13 @@ class NeighborRegressor(Regressor):
         for i in range(n_test):
             distances=np.zeros(n_train)
             for j in range(n_train):
-                distances[j]=self.distance(self.X_train[j, :], X_test[i, :])    
+                distances[j]=self.__distance(self.X_train[j, :], X_test[i, :])    
             indices=np.argpartition(distances, self.k)[0:self.k]   
             predictions[i]=np.mean(self.y_train[indices])
         
         return predictions
             
-    def distance(self, x1, x2):
+    def __distance(self, x1, x2): # il metodo può essere chiamato solo dall'interno
         return np.sum((x1-x2)**2)
 
 
