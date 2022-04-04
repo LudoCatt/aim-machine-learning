@@ -43,6 +43,8 @@ class ParametersTuner():
                 plt.xlabel(my_k)
                 plt.ylabel('Upper bound MSE')
                 plt.savefig(self.output_path['output_path']+params['fig_name'])
+# per risalire al path e dare il nome ho unito i due pezzi passati
+# fig_name risulta uno degli elementi dei **params, infatti viene unito tutto
 
 # vediamo la miglior combinazione dei due parametri
         elif len(param_dict.keys())==2:
@@ -74,8 +76,7 @@ class ParametersTuner():
 
         else:
             raise TypeError('Si è superato il numero massimo di parametri supportato (2)')
-# per risalire al path e dare il nome ho unito i due pezzi passati
-# fig_name risulta uno degli elementi dei **params, infatti viene unito tutto
+
         return param_res
 
     
