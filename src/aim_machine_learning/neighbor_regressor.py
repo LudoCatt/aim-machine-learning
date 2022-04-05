@@ -23,7 +23,7 @@ class NeighborRegressor(Regressor):
         n_train=self.X_train.shape[0] 
         predictions=np.zeros(n_test)
 
-# si osservi che senza try il codice non funzionerebbe nel caso in cui X_test sia monodimensionale  
+# si osservi che senza try il codice non funzionerebbe nel caso in cui X sia monodimensionale  
         try:      
             for i in range(n_test):
                 distances=np.zeros(n_train)
